@@ -1,0 +1,19 @@
+Distance <- c(0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.2)
+Number of IaSN <- c(15,28,58,62,65,56,64,35,27,7,4)
+
+panel.hist <- function(x, ...)
+{
+  usr <- par("usr")
+  par(usr = c(usr[1:2], 0, 1.5) )
+  h <- hist(x, plot = FALSE)
+  breaks <- h$breaks; nB <- length(breaks)
+  y <- h$counts; y <- y/max(y)
+  rect(breaks[-nB], 0, breaks[-1], y, col = "grey", ...)
+}
+
+pairs(cbind(Distance,Number_of_Type_IaSN))
+
+setwd("C:/Users/aidan/Desktop/")
+Ia_data <- read.csv("Ia_data.csv", header = TRUE, sep = ",")
+print(Ia_data)
+head(Ia_data)
